@@ -62,6 +62,13 @@ export interface DuplexCalibrationTransform {
 const clampFinite = (value: number, low: number, high: number, fallback: number): number =>
   Number.isFinite(value) ? Math.min(Math.max(value, low), high) : fallback;
 
+export const IDENTITY_CALIBRATION: DuplexCalibrationTransform = {
+  offsetXMM: 0,
+  offsetYMM: 0,
+  scaleX: 1,
+  scaleY: 1,
+};
+
 export function normalizeDuplexCalibration(
   c: DuplexCalibrationTransform,
 ): DuplexCalibrationTransform {

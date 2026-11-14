@@ -1,17 +1,8 @@
-import {
-  HORIZONTAL_REFERENCE_MM,
-  midX,
-  midY,
-  normalizeCalibration,
-  VERTICAL_REFERENCE_MM,
-} from './localTypes';
-import type {
-  DuplexBindingEdge,
-  DuplexCalibrationTransform,
-  Rect,
-  Size,
-  Vector,
-} from './localTypes';
+import { HORIZONTAL_REFERENCE_MM, VERTICAL_REFERENCE_MM } from '../constants';
+import { midX, midY } from '../geometry';
+import type { Rect, Size, Vector } from '../geometry';
+import { normalizeDuplexCalibration as normalizeCalibration } from '../models/projectSettings';
+import type { DuplexBindingEdge, DuplexCalibrationTransform } from '../models/projectSettings';
 
 /**
  * Pure measurement and correction mathematics for the print verification loop

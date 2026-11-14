@@ -16,3 +16,7 @@ export const MAXIMUM_CARDS_PER_PROJECT = 200;
 export const MAXIMUM_STORED_IMAGE_DIMENSION = 8_000;
 export const MAXIMUM_RASTER_PIXEL_COUNT = 48_000_000;
 export const EXPORT_RETENTION_MS = 24 * 60 * 60 * 1_000;
+
+/** Calibration sheet reference frame (CalibrationSheetService.horizontalReferenceMM / verticalReferenceMM). */
+export const HORIZONTAL_REFERENCE_MM = 100;
+export const VERTICAL_REFERENCE_MM = 150;

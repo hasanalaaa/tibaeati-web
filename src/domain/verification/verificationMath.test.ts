@@ -1,5 +1,9 @@
-import { IDENTITY_CALIBRATION, normalizeCalibration } from './localTypes';
-import type { DuplexCalibrationTransform, Rect, Vector } from './localTypes';
+import type { Rect, Vector } from '../geometry';
+import {
+  IDENTITY_CALIBRATION,
+  normalizeDuplexCalibration as normalizeCalibration,
+} from '../models/projectSettings';
+import type { DuplexCalibrationTransform } from '../models/projectSettings';
 import {
   CONFIDENCE_THRESHOLD,
   measure,

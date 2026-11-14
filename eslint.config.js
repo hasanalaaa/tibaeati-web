@@ -34,8 +34,12 @@ export default tseslint.config(
     languageOptions: { globals: globals.node },
   },
   {
-    files: ['eslint.config.js'],
+    files: ['eslint.config.js', 'scripts/**'],
     ...tseslint.configs.disableTypeChecked,
+  },
+  {
+    files: ['scripts/**'],
+    languageOptions: { globals: globals.node },
   },
   {
     files: ['src/lib/**'],

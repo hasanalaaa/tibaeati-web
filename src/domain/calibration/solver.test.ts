@@ -6,7 +6,7 @@ import {
   CONFIDENCE_THRESHOLD,
 } from './solver';
 import type { Solution, SolveFailure } from './solver';
-import type { Rect } from './localTypes';
+import type { Rect } from '../geometry';
 
 // Mirrors XCTAssertEqual(_, _, accuracy:): |a - b| <= accuracy.
 function expectNear(actual: number, expected: number, accuracy: number): void {

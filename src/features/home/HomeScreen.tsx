@@ -22,6 +22,24 @@ function GearIcon() {
   );
 }
 
+function FolderIcon() {
+  return (
+    <svg
+      aria-hidden="true"
+      width="22"
+      height="22"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+    </svg>
+  );
+}
+
 export function HomeScreen() {
   const t = useT();
   const [, navigate] = useLocation();
@@ -29,9 +47,14 @@ export function HomeScreen() {
     <Screen
       title={t('home.title')}
       actions={
-        <IconButton label={t('nav.settings')} onClick={() => navigate('/settings')}>
-          <GearIcon />
-        </IconButton>
+        <>
+          <IconButton label={t('nav.library')} onClick={() => navigate('/library')}>
+            <FolderIcon />
+          </IconButton>
+          <IconButton label={t('nav.settings')} onClick={() => navigate('/settings')}>
+            <GearIcon />
+          </IconButton>
+        </>
       }
     >
       <p className="mb-4 text-fg-muted">{t('home.subtitle')}</p>

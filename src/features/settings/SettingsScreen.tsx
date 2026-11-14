@@ -1,8 +1,10 @@
-import type { ReactNode } from 'react';
 import { useLocation } from 'wouter';
 import { useI18n } from '@/app/i18n';
 import type { Language } from '@/app/i18n';
-import { Button, Card, Screen } from '@/ui';
+import { Button, Screen } from '@/ui';
+import { BackupSection } from './BackupSection';
+import { Section } from './Section';
+import { StorageSection } from './StorageSection';
 
 type Appearance = 'system' | 'light' | 'dark';
 
@@ -15,15 +17,6 @@ export interface SettingsScreenProps {
   version: string;
   updateAvailable: boolean;
   onUpdate: () => void;
-}
-
-function Section({ title, children }: { title: string; children: ReactNode }) {
-  return (
-    <Card className="mb-3">
-      <h2 className="mb-3 text-base font-bold">{title}</h2>
-      {children}
-    </Card>
-  );
 }
 
 export function SettingsScreen({
@@ -66,6 +59,8 @@ export function SettingsScreen({
             ))}
           </div>
         </Section>
+        <StorageSection />
+        <BackupSection />
         <Section title={t('settings.update')}>
           <p className="mb-3 text-fg-muted" role="status">
             {updateAvailable ? t('settings.update.available') : t('settings.update.none')}

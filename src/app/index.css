@@ -12,6 +12,8 @@
   --color-accent: var(--c-accent);
   --color-accent-soft: var(--c-accent-soft);
   --color-on-accent: var(--c-on-accent);
+  --color-warning: var(--c-warning);
+  --color-success: var(--c-success);
   --color-input: var(--c-input);
   --color-chrome: var(--c-chrome);
   --radius-sm: var(--r-sm);

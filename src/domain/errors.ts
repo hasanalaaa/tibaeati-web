@@ -13,7 +13,10 @@ export type AppError =
   | { readonly code: 'invalidFileName' }
   | { readonly code: 'exportFailed'; readonly reason: MessageParam }
   | { readonly code: 'printCancelled' }
-  | { readonly code: 'unsupportedProjectVersion' };
+  | { readonly code: 'unsupportedProjectVersion' }
+  | { readonly code: 'fileTooLarge' }
+  | { readonly code: 'unsupportedFileType' }
+  | { readonly code: 'invalidBackup' };
 
 export type AppErrorCode = AppError['code'];
 

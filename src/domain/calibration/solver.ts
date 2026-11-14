@@ -1,5 +1,5 @@
-import { HORIZONTAL_REFERENCE_MM, VERTICAL_REFERENCE_MM } from './localTypes';
-import type { Rect } from './localTypes';
+import { HORIZONTAL_REFERENCE_MM, VERTICAL_REFERENCE_MM } from '../constants';
+import type { Rect } from '../geometry';
 
 /**
  * Solves printer feed calibration from a scanned test sheet (port of the pure

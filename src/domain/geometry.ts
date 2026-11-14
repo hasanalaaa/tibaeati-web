@@ -9,6 +9,12 @@ export interface Size {
 }
 
 /** CoreGraphics-style rectangle, origin top-left. Widths are never negative in this app. */
+/** CGVector. */
+export interface Vector {
+  readonly dx: number;
+  readonly dy: number;
+}
+
 export interface Rect {
   readonly x: number;
   readonly y: number;

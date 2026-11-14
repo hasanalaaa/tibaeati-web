@@ -2,6 +2,8 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useState } 
 import type { ReactNode } from 'react';
 import { ar } from './ar';
 import { en } from './en';
+import { formatMessage, interpolate } from './format';
+import type { Message, MessageParams } from '@/domain/messages';
 
 export type Language = 'ar' | 'en';
 export type MessageKey = keyof typeof ar;
@@ -18,10 +20,16 @@ function readLanguage(): Language {
   }
 }
 
+/** `t(key, params)` or `t(message)` for a domain `Message`; both fill `{name}` placeholders. */
+export interface Translate {
+  (key: MessageKey, params?: MessageParams): string;
+  (message: Message): string;
+}
+
 interface I18nValue {
   language: Language;
   setLanguage: (language: Language) => void;
-  t: (key: MessageKey) => string;
+  t: Translate;
 }
 
 const I18nContext = createContext<I18nValue | null>(null);
@@ -43,10 +51,15 @@ export function I18nProvider({ children }: { children: ReactNode }) {
     }
   }, []);
 
-  const value = useMemo<I18nValue>(
-    () => ({ language, setLanguage, t: (key) => DICTIONARIES[language][key] }),
-    [language, setLanguage],
-  );
+  const value = useMemo<I18nValue>(() => {
+    const lookup = (key: string) =>
+      (DICTIONARIES[language] as Record<string, string | undefined>)[key] ?? key;
+    const t: Translate = (keyOrMessage: MessageKey | Message, params?: MessageParams) =>
+      typeof keyOrMessage === 'string'
+        ? interpolate(lookup(keyOrMessage), params, lookup)
+        : formatMessage(keyOrMessage, lookup);
+    return { language, setLanguage, t };
+  }, [language, setLanguage]);
 
   return <I18nContext.Provider value={value}>{children}</I18nContext.Provider>;
 }
@@ -57,6 +70,6 @@ export function useI18n(): I18nValue {
   return value;
 }
 
-export function useT(): (key: MessageKey) => string {
+export function useT(): Translate {
   return useI18n().t;
 }
