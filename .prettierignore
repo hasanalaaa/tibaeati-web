@@ -1,0 +1,7 @@
+dist
+coverage
+package-lock.json
+SPEC.md
+ARCHITECTURE.md
+CLAUDE.md
+docs/adr
