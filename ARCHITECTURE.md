@@ -16,7 +16,7 @@ src/lib/        tiny generic helpers (no app knowledge)
 
 Rules:
 
-- `domain` imports nothing but `lib`. It must run in Node (Vitest) with no DOM.
+- `domain` imports nothing but `lib` and `zod` (schemas). It must run in Node (Vitest) with no DOM.
 - `services` never import `features` or `ui`. `ui` never imports `features`, `services` or `domain`.
 - Features do not import each other; shared code moves down a layer. Each feature exposes an `index.ts`.
 - The only `app` module a feature may import is `@/app/i18n` (the `useT` hook).
