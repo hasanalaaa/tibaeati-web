@@ -18,7 +18,8 @@ Rules:
 
 - `domain` imports nothing but `lib`. It must run in Node (Vitest) with no DOM.
 - `services` never import `features` or `ui`. `ui` never imports `features`, `services` or `domain`.
-- Features do not import each other; shared code moves down a layer.
+- Features do not import each other; shared code moves down a layer. Each feature exposes an `index.ts`.
+- The only `app` module a feature may import is `@/app/i18n` (the `useT` hook).
 - Persisted shapes live in `src/domain/models` with a zod schema and a `schemaVersion`; every stored
   record is parsed on read. Changing a persisted shape requires a migration in `src/services/storage`.
 - All physical geometry is computed in integer micrometres in `domain`, converted to PDF points only

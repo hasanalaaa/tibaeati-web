@@ -1,0 +1,10 @@
+{
+  "ignore": {
+    "no-error-tracking": ["."],
+    "no-account-deletion": ["."]
+  },
+  "why": {
+    "no-error-tracking": "SPEC N1: no network requests and no telemetry; errors are shown to the user locally.",
+    "no-account-deletion": "The app has no accounts; all data is local and removable from Settings/backup."
+  }
+}
